@@ -1,0 +1,45 @@
+﻿@model IEnumerable<InAndOut.Models.Expence>
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Expences list</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a class="btn btn-primary" asp-controller="Expence" asp-action="Create">create an Expence</a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped " style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Expence Name 
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>Changes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var expence in Model)
+        {
+            <tr>
+                <td width="35%">@expence.ExpenceName</td>
+                <td width="35%"> @expence.Amount</td>
+                <td width="30%">
+                    <div class="w-100 btn-group"role="group">
+                        <a asp-controller="Expence" asp-action="Update" asp-route-id="@expence.id" class="btn btn-primary mx-1">Update</a>
+                        <a asp-controller="Expence" asp-action="Delete" asp-route-id="@expence.id" class="btn btn-danger mx-1">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
